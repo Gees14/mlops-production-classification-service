@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment secrets
+.env
+
+# ML artifacts (use DVC or artifact store for large files)
+artifacts/model/*.joblib
+artifacts/preprocessing/*.joblib
+artifacts/preprocessing/*.json
+
+# MLflow
+mlruns/
+mlflow.db
+
+# Logs
+logs/*.jsonl
+
+# Reports (generated)
+reports/data_validation.json
+reports/metrics.json
+reports/figures/
+reports/model_card.md
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb

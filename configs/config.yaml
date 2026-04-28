@@ -1,0 +1,35 @@
+# MLOps Production Classification Service — Main Configuration
+# Replace dataset_path, target_column, and feature lists to use your own data.
+
+dataset:
+  dataset_path: "data/sample_data.csv"
+  target_column: "churned"
+  test_size: 0.2
+  random_seed: 42
+
+features:
+  # Leave empty to auto-detect from dataset
+  numeric_features: []
+  categorical_features: []
+
+model:
+  model_type: "random_forest"   # logistic_regression | random_forest | xgboost
+  model_version: "local-dev"
+
+paths:
+  output_dir: "artifacts"
+  model_path: "artifacts/model/model.joblib"
+  preprocessor_path: "artifacts/preprocessing/preprocessor.joblib"
+  training_stats_path: "artifacts/preprocessing/training_stats.json"
+  prediction_log_path: "logs/predictions.jsonl"
+  reports_dir: "reports"
+  figures_dir: "reports/figures"
+
+mlflow:
+  mlflow_tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "classification-service"
+
+validation:
+  min_rows: 20
+  max_missing_ratio: 0.3
+  max_class_imbalance_ratio: 10.0

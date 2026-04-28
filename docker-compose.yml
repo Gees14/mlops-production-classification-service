@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: classification-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount artifacts and logs so they persist across container restarts
+      - ./artifacts:/app/artifacts
+      - ./logs:/app/logs
+      - ./reports:/app/reports
+      - ./mlruns:/app/mlruns
+    environment:
+      - APP_ENV=production
+      - MLFLOW_TRACKING_URI=mlruns
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
