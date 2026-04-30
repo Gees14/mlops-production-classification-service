@@ -1,14 +1,16 @@
 # MLOps Production Classification Service
 
-A production-style machine learning classification service demonstrating the full MLOps lifecycle — from raw CSV data through training, experiment tracking, REST API inference, prediction logging, and monitoring — packaged for Docker and tested with GitHub Actions CI.
+![CI](https://github.com/Gees14/mlops-production-classification-service/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+A production-style machine learning classification service covering the full MLOps lifecycle — raw CSV data through training, experiment tracking, REST API inference, prediction logging, drift detection, and monitoring — packaged for Docker and tested with GitHub Actions CI.
 
 > **Dataset note:** The included dataset is synthetic and is used only to validate the pipeline. Replace it with your own data by updating `configs/config.yaml`.
 
 ---
 
-## Why This Project Demonstrates MLOps
-
-This project is intentionally designed to show the skills that matter for ML Engineer and MLOps roles:
+## What It Covers
 
 | Skill | Demonstrated by |
 |---|---|
@@ -348,18 +350,18 @@ After training, `reports/model_card.md` contains:
 
 ---
 
-## Portfolio Value
+## Skills Demonstrated
 
-This project demonstrates:
-
-- **MLOps pipeline design** — end-to-end flow from raw data to deployed API
-- **Production code standards** — type hints, Pydantic validation, structured logging, config files
-- **Experiment tracking** — MLflow integration with parameterised runs
-- **API engineering** — FastAPI with OpenAPI docs, batch endpoints, error handling
-- **Observability** — prediction logging, monitoring summary, drift warnings
-- **Testing discipline** — unit tests for every layer; CI smoke-trains the pipeline
-- **DevOps basics** — Docker, docker-compose, GitHub Actions, Makefile
-- **Documentation** — architecture diagrams, model card, decision records, dataset README
+| Skill | Where |
+|---|---|
+| MLOps pipeline design | End-to-end flow from raw data to deployed API |
+| Production code standards | Type hints, Pydantic validation, structured logging, config files |
+| Experiment tracking | MLflow integration with parameterised runs |
+| API engineering | FastAPI with OpenAPI docs, batch endpoints, error handling |
+| Observability | Prediction logging, monitoring summary, drift warnings |
+| Testing discipline | Unit tests for every layer; CI smoke-trains the pipeline |
+| DevOps | Docker, docker-compose, GitHub Actions, Makefile |
+| Documentation | Architecture diagrams, model card, decision records |
 
 ---
 
