@@ -37,7 +37,8 @@ jobs:
         run: pytest tests/ -v --tb=short
 
       - name: Run training smoke test
-        run: python -c "
+        run: |
+          python - <<'EOF'
           import sys; sys.path.insert(0, '.')
           from src.data.loader import load_csv
           from src.data.validation import validate_dataset
@@ -47,12 +48,12 @@ jobs:
           from sklearn.model_selection import train_test_split
           df = load_csv('data/sample_data.csv')
           report = validate_dataset(df, 'churned')
-          assert report['passed'], f'Validation failed: {report[\"issues\"]}'
+          assert report['passed'], 'Validation failed: ' + str(report['issues'])
           X = df.drop(columns=['churned']); y = df['churned']
           X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
           pre, _, _ = fit_preprocessor(X_train, target_column=None)
           model = train_model(pre.transform(X_train), y_train.values, model_type='random_forest')
           metrics = compute_metrics(model, pre.transform(X_test), y_test.values)
           assert metrics['accuracy'] > 0.0, 'Expected positive accuracy'
-          print(f'Smoke test passed — accuracy={metrics[\"accuracy\"]}')
-          "
+          print('Smoke test passed — accuracy=' + str(metrics['accuracy']))
+          EOF
